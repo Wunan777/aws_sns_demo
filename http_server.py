@@ -9,11 +9,13 @@ app = Flask(__name__)
 def callback_confirmation():
     # Get the data from the POST request
     try:
+        # 1, Sign Verification.
+        # 2, Confirm.
         data = None
         content_type = request.headers["Content-Type"]
-        if content_type == "text/plain":
+        if "text/plain" in content_type.lower():
             data = json.loads(request.data.decode("utf-8"))
-        elif content_type == "application/json":
+        elif "application/json" in content_type.lower():
             data = request.get_json()
         else:
             raise Exception("UNHandle Content-Type: {}".format(content_type))
