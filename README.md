@@ -2,6 +2,10 @@
 Description: how to subscrib sns-message via `http(s) endpoint`.
  
 ## Usage
+Before start , install dependence.
+```
+pip3 install -r requirements.txt
+```
 First, Set up your own http server.
 ```
 python3 http_server.py --port 8080
@@ -13,7 +17,7 @@ Second,
 enter to your aws console, setting your topic, enter the topic you setted just now, and find `create subscription` button in aws console (refs: https://us-west-1.console.aws.amazon.com/sns/v3/home?region=us-west-1#/topics). Choose option type `http(s) endpoint`, then fill your own `public server host` and try to subscrib.
 
 Third,
-Find the `publish message` in the same page, try to send your message.
+Find the `publish message` button in the same page, try to send your message.
 ## Caveat: 
 About sns-message-validator, due to aws still not supply offical sns-message-validator. There are some validator from aws user written. The validator in this repo also choosen from them.
 

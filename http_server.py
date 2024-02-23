@@ -2,7 +2,7 @@ from flask import Flask, request
 import requests
 import argparse
 import json
-from .src.sns_message_verification import valid_sns_message
+from src.sns_message_verification import valid_sns_message
 
 app = Flask(__name__)
 
@@ -37,11 +37,12 @@ def handle_event_subscribe_unconfirmation(data):
 def handle_event_notification(data):
 
     topic = data.get("TopicArn")
+    subject = data.get("Subject")
     message_id = data.get("MessageId")
     message = data.get("Message")
     print(
-        "recv topic: {}, message_id : {}, message: {}.".format(
-            topic, message_id, message
+        "recv topic: {}, subject: {} message_id : {}, message: {}.".format(
+            topic, subject, message_id, message
         )
     )
     return "Recive notification successfully!"
